@@ -1,4 +1,7 @@
 package com.example.myapplication.base;
 
-public class BaseFragment {
+import androidx.fragment.app.Fragment;
+
+public class BaseFragment extends Fragment {
+
 }

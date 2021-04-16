@@ -4,7 +4,6 @@ import com.example.myapplication.Bean.User;
 import com.example.myapplication.Presenters.IdentifyUser;
 import com.example.myapplication.datas.DataCollection;
 import com.example.myapplication.ui.callbacks.Login;
-
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 

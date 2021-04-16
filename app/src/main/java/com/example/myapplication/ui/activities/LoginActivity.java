@@ -95,6 +95,7 @@ public class LoginActivity extends BaseActivity implements Login {
                 if(codeStr.equals(code)){
                     IdentifyUser identifyUser=new IdentifyUserImpel();
                     identifyUser.identifyUser(new User(account,password));
+                    identifyUser.register(LoginActivity.this);
                 }else {
                     showToast("验证码输入错误");
                 }

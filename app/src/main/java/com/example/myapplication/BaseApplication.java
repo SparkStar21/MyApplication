@@ -17,7 +17,6 @@ public class BaseApplication extends Application {
             }
         }).start();
 
-        this.context=getApplicationContext();
     }
 
 

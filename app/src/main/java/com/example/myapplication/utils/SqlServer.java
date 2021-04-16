@@ -2,11 +2,14 @@ package com.example.myapplication.utils;
 
 import android.database.SQLException;
 
+import com.example.myapplication.Bean.CommodityBean;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SqlServer {
 
@@ -132,17 +135,16 @@ public class SqlServer {
      * @param columnName 要输出的列名
      * @return 返回动态数组
      */
-    public ArrayList<String> getList(String sql,String columnName)
+    public List<CommodityBean> getList(String sql)
     {
-        ArrayList<String> rslist = new ArrayList<String>();
+        ArrayList<CommodityBean> rslist = new ArrayList<CommodityBean>();
         try
         {
             Statement stmt = con.createStatement();
             stmt.setQueryTimeout(timeOut);
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                String str = rs.getString(columnName);
-                rslist.add(str);
+                rslist.add(new CommodityBean(rs.getInt(0),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));
             }
             rs.close();
             stmt.close();

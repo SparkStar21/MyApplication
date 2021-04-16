@@ -1,4 +1,4 @@
-package com.example.myapplication.Bean;
+package com.example.myapplication.base;
 
 public interface RegisterThis <T> {
     void register(T callback);
