@@ -10,6 +10,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_main">商城首页</string>
+    <string name="menu_commodity">首页</string>
+    <string name="menu_message">消息</string>
+    <string name="menu_record">记录</string>
 
     <string name="login_title" translatable="false">欢迎登陆校园二手市场</string>
     <string name="login_account" translatable="false">账号</string>

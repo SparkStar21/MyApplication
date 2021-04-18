@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@drawable/ic_baseline_account_balance_24"
+        id="@+id/tab1"
+        title="首页"/>
+    <tab
+        icon="@drawable/ic_baseline_account_box_24"
+        id="@+id/tab2"
+        title="消息"/>
+    <tab
+        icon="@drawable/ic_baseline_event_note_24"
+        id="@+id/tab3"
+        title="记录"/>
+</tabs>

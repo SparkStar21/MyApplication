@@ -39,21 +39,42 @@ public class DataCollection {
             @Override
             protected void subscribeActual(Observer observer) {
                 List <CommodityBean> list=sqlServer.getList(str);
-                for (CommodityBean c:list){
-                    if(!c.getPicturePath().isEmpty()){
-                        try {
-                            c.setBitmaps(socketImage(c.getPicturePath()));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                try {
+                    list.get(0).setBitmaps(socketImage(list.get(0).getPicturePath()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
                 observer.onNext(list);
             }
         };
         subscribe(o,observable);
     }
+    public static void getImage(Observer o,String path){
+        Observable observable=new Observable() {
+            @Override
+            protected void subscribeActual(Observer observer) {
+                try {
+                    observer.onNext(socketImage(path));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        subscribe(o,observable);
+    }
 
+    public static void getImages(Observer o,String path){
+        Observable observable=new Observable() {
+            @Override
+            protected void subscribeActual(Observer observer) {
+
+            }
+        };
+    }
 
     private static void subscribe(Observer s,Observable o){
         o.subscribeOn(Schedulers.io())
@@ -64,24 +85,32 @@ public class DataCollection {
                 .subscribe(s);
     }
 
-    private static List<Bitmap> socketImage(String path) throws IOException {
+    private static List<Bitmap> socketImage(String path) throws IOException, InterruptedException {
         List <Bitmap> list=new ArrayList<>();
+        byte [] de;
         Socket socket=new Socket("10.0.2.2",1122);
         DataOutputStream dataOutputStream=new DataOutputStream(socket.getOutputStream());
-        dataOutputStream.writeUTF("start");
-        dataOutputStream.flush();
+        dataOutputStream.writeUTF("download");
         dataOutputStream.writeUTF(path);
-        dataOutputStream.flush();
+        socket.close();
         dataOutputStream.close();
+        socket=new Socket("10.0.2.2",1122);
         DataInputStream dataInputStream=new DataInputStream(socket.getInputStream());
         int count=dataInputStream.read();
         for(int i=0;i<count;i++){
-            byte [] de=new byte[dataInputStream.available()];
+            de=new byte[dataInputStream.available()];
             dataInputStream.read(de);
-            dataInputStream.reset();
+            Thread.sleep(50);
+            System.out.println(de.length);
             list.add(BitmapFactory.decodeByteArray(de, 0, de.length));
+            socket.close();
+            dataInputStream.close();
+            socket=new Socket("10.0.2.2",1122);
+            dataInputStream=new DataInputStream(socket.getInputStream());
         }
-        dataOutputStream.writeUTF("end");
+        dataOutputStream.close();
+        dataInputStream.close();
+        socket.close();
         return list;
     }
 

@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.myapplication.Bean.CommodityBean;
 import com.example.myapplication.R;
 
@@ -20,11 +19,21 @@ import butterknife.ButterKnife;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.ViewHolder> {
 
+
     private List<CommodityBean>list;
     private Context context;
     public RecycleViewAdapter(List<CommodityBean>list,Context context){
         this.list=list;
         this.context=context;
+    }
+    private OnItemClick onItemClick;
+
+    public void setOnItemClickListener(OnItemClick onItemClickListener){
+        this.onItemClick=onItemClickListener;
+    }
+
+    public interface OnItemClick{
+        void onItemClickListener(int position);
     }
 
     @NonNull
@@ -38,15 +47,21 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(context).load(list.get(position).getBitmaps().get(0)).into(holder.commodityImage);
+      //  Glide.with(context).load(list.get(position).getBitmaps().get(0)).into(holder.commodityImage);
         holder.commodityName.setText(list.get(position).getName());
         holder.commodityDes.setText(list.get(position).getDescription());
-        holder.commodityPrice.setText(list.get(position).getPrice());
+        holder.commodityPrice.setText("¥"+list.get(position).getPrice());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick.onItemClickListener(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

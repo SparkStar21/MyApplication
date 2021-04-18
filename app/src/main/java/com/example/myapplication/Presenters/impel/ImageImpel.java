@@ -1,11 +1,10 @@
 package com.example.myapplication.Presenters.impel;
 
-import android.util.Log;
+import android.graphics.Bitmap;
 
-import com.example.myapplication.Bean.CommodityBean;
-import com.example.myapplication.Presenters.AllData;
+import com.example.myapplication.Presenters.Image;
 import com.example.myapplication.datas.DataCollection;
-import com.example.myapplication.ui.callbacks.AllCommodity;
+import com.example.myapplication.ui.callbacks.Channel;
 
 import java.util.List;
 
@@ -13,10 +12,9 @@ import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 
-public class AllDataImpel implements AllData {
-    private String LOG="AllDataImpel";
+public class ImageImpel implements Image {
     @Override
-    public void loadAllData() {
+    public void getImage(String path) {
         Observer observer=new Observer() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -25,9 +23,7 @@ public class AllDataImpel implements AllData {
 
             @Override
             public void onNext(@NonNull Object o) {
-                Log.e(LOG,o.toString());
-                commodity.getAllCommodity((List<CommodityBean>) o);
-
+                channel.dataChannel((List<Bitmap>)o);
             }
 
             @Override
@@ -40,13 +36,12 @@ public class AllDataImpel implements AllData {
 
             }
         };
-        DataCollection.getAllCommodity(observer,"SELECT gid,gimage,gname,gnumber,gdes,gprice,phoneNum,guser,originalprice FROM goods");
+        DataCollection.getImage(observer,path);
     }
 
-
-    private AllCommodity commodity;
+    private Channel channel;
     @Override
-    public void register(AllCommodity callback) {
-        commodity=callback;
+    public void register(Channel callback) {
+        channel=callback;
     }
 }

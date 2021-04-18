@@ -12,7 +12,7 @@ public class CommodityBean implements Serializable {
     private String location;			//商品所在宿舍楼
     private String description;			//商品描述
     private String price;				//商品现价
-    private String amount;			//商品数量
+    private String phone;			    //联系人电话
     private long registerTime;			//商品上传时间
     private String user;				//所属用户
     private String originPrice;			//商品原价
@@ -24,25 +24,26 @@ public class CommodityBean implements Serializable {
 
     }
 
-    public CommodityBean(int gid, String picturePath, String name, String location, String description, String price,String user, String originPrice) {
+    public CommodityBean(int gid, String picturePath, String name, String location, String description, String price,String phone,String user, String originPrice) {
         this.gid = gid;
         this.picturePath = picturePath;
         this.name = name;
         this.location = location;
         this.description = description;
         this.price = price;
+        this.phone=phone;
         this.user = user;
         this.originPrice = originPrice;
     }
 
-    public CommodityBean(int gid, String picturePath, String name, String location, String description, String price, String amount, long registerTime, String user, String originPrice, long updateTime, List<Bitmap> bitmaps) {
+    public CommodityBean(int gid, String picturePath, String name, String location, String description, String price, String phone, long registerTime, String user, String originPrice, long updateTime, List<Bitmap> bitmaps) {
         this.gid = gid;
         this.picturePath = picturePath;
         this.name = name;
         this.location = location;
         this.description = description;
         this.price = price;
-        this.amount = amount;
+        this.phone = phone;
         this.registerTime = registerTime;
         this.user = user;
         this.originPrice = originPrice;
@@ -98,12 +99,12 @@ public class CommodityBean implements Serializable {
         this.price = price;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getPhone() {
+        return phone;
     }
 
     public void setAmount(String amount) {
-        this.amount = amount;
+        this.phone = amount;
     }
 
     public long getRegisterTime() {
