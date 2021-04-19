@@ -21,7 +21,7 @@ public class BaseApplication extends Application implements AllCommodity {
             @Override
             public void run() {
                 DataCollection dataCollection=new DataCollection();
-                initPresenter();
+
             }
         }).start();
 

@@ -158,4 +158,26 @@ public class SqlServer {
         }
         return rslist;
     }
+
+    public CommodityBean getCommodity(String sql){
+        CommodityBean commodityBean = null;
+        try
+        {
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(timeOut);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next())
+            commodityBean=new CommodityBean(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
+            rs.close();
+            stmt.close();
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        } catch (java.sql.SQLException e)
+        {
+            System.out.println(e);
+        }
+        return commodityBean;
+    }
 }

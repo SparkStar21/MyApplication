@@ -1,4 +1,4 @@
 package com.example.myapplication.Presenters;
 
-public interface Images {
+public interface UpLoad {
 }

@@ -1,9 +1,7 @@
 package com.example.myapplication.ui.callbacks;
 
-import android.graphics.Bitmap;
-
-import java.util.List;
+import com.example.myapplication.Bean.CommodityBean;
 
 public interface Channel {
-    void dataChannel(List<Bitmap> list);
+    void dataChannel(CommodityBean commodityBean);
 }

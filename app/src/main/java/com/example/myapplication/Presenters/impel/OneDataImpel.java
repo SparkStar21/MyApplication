@@ -1,20 +1,17 @@
 package com.example.myapplication.Presenters.impel;
 
-import android.graphics.Bitmap;
-
-import com.example.myapplication.Presenters.Image;
+import com.example.myapplication.Bean.CommodityBean;
+import com.example.myapplication.Presenters.OneData;
 import com.example.myapplication.datas.DataCollection;
 import com.example.myapplication.ui.callbacks.Channel;
-
-import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 
-public class ImageImpel implements Image {
+public class OneDataImpel implements OneData {
     @Override
-    public void getImage(String path) {
+    public void getImage(int position) {
         Observer observer=new Observer() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
@@ -23,7 +20,7 @@ public class ImageImpel implements Image {
 
             @Override
             public void onNext(@NonNull Object o) {
-                channel.dataChannel((List<Bitmap>)o);
+                channel.dataChannel((CommodityBean) o);
             }
 
             @Override
@@ -36,7 +33,7 @@ public class ImageImpel implements Image {
 
             }
         };
-        DataCollection.getImage(observer,path);
+        DataCollection.getDetail(observer,String.format("SELECT gid,gimage,gname,gnumber,gdes,gprice,phoneNum,guser,originalprice FROM goods WHERE gid = %d",position));
     }
 
     private Channel channel;

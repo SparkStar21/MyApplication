@@ -100,6 +100,7 @@ public class CommodityFragment extends BaseFragment implements AllCommodity {
 
     @Override
     public void getAllCommodity(List<CommodityBean> list) {
+        Log.e("", String.valueOf(list.get(0).getBitmaps().size()));
         recyclerViewCommodity.setLayoutManager(new GridLayoutManager(getActivity(),1));
         recycleViewAdapter=new RecycleViewAdapter(list,getActivity());
         recyclerViewCommodity.setAdapter(recycleViewAdapter);
@@ -113,13 +114,14 @@ public class CommodityFragment extends BaseFragment implements AllCommodity {
             }
         });
         List<Bitmap> bitmaps=new ArrayList<>();
- /**       int i=0;
+       int i=0;
         while (bitmaps.size()<5){
-            if(list.get(i++).getBitmaps().size()!=0){
+            if(list.get(i).getBitmaps().size()!=0){
                 bitmaps.add(list.get(i++).getBitmaps().get(0));
             }
         }
-**/
+        initPager(bitmaps);
+
     }
 
 }

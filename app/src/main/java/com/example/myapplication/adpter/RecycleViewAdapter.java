@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Bean.CommodityBean;
 import com.example.myapplication.R;
 
@@ -47,7 +48,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-      //  Glide.with(context).load(list.get(position).getBitmaps().get(0)).into(holder.commodityImage);
+        Glide.with(context).load(list.get(position).getBitmaps().get(0)).into(holder.commodityImage);
         holder.commodityName.setText(list.get(position).getName());
         holder.commodityDes.setText(list.get(position).getDescription());
         holder.commodityPrice.setText("¥"+list.get(position).getPrice());

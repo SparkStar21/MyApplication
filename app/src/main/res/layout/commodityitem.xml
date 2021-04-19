@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
     android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/commodityImage"
         android:layout_width="120sp"
-        android:layout_height="120sp"
+        android:layout_height="100sp"
         android:contentDescription="test"
         android:scaleType="fitXY"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />

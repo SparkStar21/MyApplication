@@ -9,10 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.example.myapplication.BaseApplication;
 import com.example.myapplication.Bean.CommodityBean;
-import com.example.myapplication.Presenters.Image;
-import com.example.myapplication.Presenters.impel.ImageImpel;
+import com.example.myapplication.Presenters.OneData;
+import com.example.myapplication.Presenters.impel.OneDataImpel;
 import com.example.myapplication.R;
 import com.example.myapplication.adpter.UltraPagerAdapter;
 import com.example.myapplication.base.BaseActivity;
@@ -58,21 +57,14 @@ public class DetailActivity extends BaseActivity implements Channel {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         Intent intent=this.getIntent();
-        initData(intent.getIntExtra("position",0));
+        initPresenter(intent.getIntExtra("position",0));
+
     }
 
-    private void initData(int position){
-        CommodityBean commodityBean= BaseApplication.unitList.get(position);
-        originalPrice.setText(originalPrice.getText()+"¥"+commodityBean.getOriginPrice());
-        currentPrice.setText(currentPrice.getText()+"¥"+commodityBean.getPrice());
-        commodityName.setText(commodityBean.getName());
-        buildingNum.setText(commodityBean.getLocation());
-        contactPhone.setText(commodityBean.getPhone());
-        contactMan.setText(commodityBean.getUser());
-        commodityDes.setText(commodityBean.getDescription());
-        Image image=new ImageImpel();
-        image.getImage(commodityBean.getPicturePath());
-        image.register(this);
+    private void initPresenter(int position){
+        OneData oneData =new OneDataImpel();
+        oneData.getImage(position+1);
+        oneData.register(this);
     }
 
 
@@ -92,8 +84,15 @@ public class DetailActivity extends BaseActivity implements Channel {
     }
 
     @Override
-    public void dataChannel(List <Bitmap> list) {
-        Log.e("", String.valueOf(list.size()));
-        initPager(list);
+    public void dataChannel(CommodityBean commodityBean) {
+        Log.e("", String.valueOf(commodityBean.getBitmaps().size()));
+        initPager(commodityBean.getBitmaps());
+        originalPrice.setText(originalPrice.getText()+"¥"+commodityBean.getOriginPrice());
+        currentPrice.setText(currentPrice.getText()+"¥"+commodityBean.getPrice());
+        commodityName.setText(commodityBean.getName());
+        buildingNum.setText(commodityBean.getLocation());
+        contactPhone.setText(commodityBean.getPhone());
+        contactMan.setText(commodityBean.getUser());
+        commodityDes.setText(commodityBean.getDescription());
     }
 }
