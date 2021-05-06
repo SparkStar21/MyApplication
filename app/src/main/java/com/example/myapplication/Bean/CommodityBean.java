@@ -18,6 +18,7 @@ public class CommodityBean implements Serializable {
     private String originPrice;			//商品原价
     private long updateTime;			//最后编辑时间
     private List<Bitmap> bitmaps;		//商品图片
+    private String amount;
 
     public CommodityBean(){
 
@@ -103,8 +104,8 @@ public class CommodityBean implements Serializable {
         return phone;
     }
 
-    public void setAmount(String amount) {
-        this.phone = amount;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public long getRegisterTime() {
@@ -145,5 +146,13 @@ public class CommodityBean implements Serializable {
 
     public void setBitmaps(List<Bitmap> bitmaps) {
         this.bitmaps = bitmaps;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 }

@@ -12,4 +12,9 @@
     <color name="blue"> #0000FF</color>
     <color name="shallowBlue"> #4169E1</color>
     <color name="grey">#A9A9A9</color>
+    <color name="ivory">#fffff0</color><!--象牙色 -->
+    <color name="green">#98fb98</color>
+    <color name="aquamarine">#7fffd4</color><!--碧绿色 -->
+    <color name="lawngreen">#7cfc00</color><!--草绿色 -->
+    <color name="LightGrey">#FAFAFA</color>
 </resources>

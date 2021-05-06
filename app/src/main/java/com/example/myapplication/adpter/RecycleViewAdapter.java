@@ -40,7 +40,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.commodityitem, null);
+        View view = View.inflate(parent.getContext(), R.layout.item_commodity, null);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
 
@@ -55,7 +55,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClickListener(position);
+                onItemClick.onItemClickListener(list.get(position).getGid());
             }
         });
     }

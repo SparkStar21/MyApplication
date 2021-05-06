@@ -18,11 +18,12 @@ public class IdentifyUserImpel implements IdentifyUser {
 
             @Override
             public void onNext(Object value) {
-                if(value.equals(user.getUsercode()))
+                User user1= (User) value;
+                if(user1.getUsercode().equals(user.getUsercode()))
                 {
-                    login.loginCallback(true);
+                    login.loginCallback(true,user1);
                 }else {
-                    login.loginCallback(false);
+                    login.loginCallback(false,user1);
                 }
             }
 
@@ -36,7 +37,7 @@ public class IdentifyUserImpel implements IdentifyUser {
 
             }
         };
-        DataCollection.getOne(observer,String.format("select Pwd from users where Name='%s'",user.getUsername()));
+        DataCollection.getOne(observer,String.format("select uid,Name,Pwd,icon,Phone  from users where Name='%s'",user.getUsername()));
     }
     private Login login;
     @Override

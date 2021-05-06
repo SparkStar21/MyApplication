@@ -4,18 +4,26 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.myapplication.BaseApplication;
+import com.example.myapplication.Bean.BuyCommodityBean;
 import com.example.myapplication.Bean.CommodityBean;
+import com.example.myapplication.Presenters.BuyCommodity;
 import com.example.myapplication.Presenters.OneData;
+import com.example.myapplication.Presenters.impel.BuyCommodityImpel;
 import com.example.myapplication.Presenters.impel.OneDataImpel;
 import com.example.myapplication.R;
 import com.example.myapplication.adpter.UltraPagerAdapter;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.ui.callbacks.Channel;
+import com.example.myapplication.utils.CustomTab;
+import com.example.myapplication.utils.WindowShow;
 import com.tmall.ultraviewpager.UltraViewPager;
 import com.tmall.ultraviewpager.UltraViewPagerAdapter;
 import com.tmall.ultraviewpager.transformer.UltraDepthScaleTransformer;
@@ -25,7 +33,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailActivity extends BaseActivity implements Channel {
+public class DetailActivity extends BaseActivity implements Channel, View.OnClickListener {
+    @Nullable
+    @BindView(R.id.return_return)
+    public ImageView finish;
     @Nullable
     @BindView(R.id.images)
     public UltraViewPager ultraViewPager;
@@ -50,7 +61,17 @@ public class DetailActivity extends BaseActivity implements Channel {
     @Nullable
     @BindView(R.id.commodityDes)
     public TextView commodityDes;
+    @Nullable
+    @BindView(R.id.collect)
+    public CustomTab collect;
+    @Nullable
+    @BindView(R.id.contactSeller)
+    public TextView contactSeller;
+    @Nullable
+    @BindView(R.id.buy)
+    public TextView buy;
 
+    private CommodityBean commodityBean;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +79,19 @@ public class DetailActivity extends BaseActivity implements Channel {
         ButterKnife.bind(this);
         Intent intent=this.getIntent();
         initPresenter(intent.getIntExtra("position",0));
+        initSet();
+    }
 
+    private void initSet(){
+        finish.setOnClickListener(this);
+        collect.setOnClickListener(this);
+        contactSeller.setOnClickListener(this);
+        buy.setOnClickListener(this);
     }
 
     private void initPresenter(int position){
         OneData oneData =new OneDataImpel();
-        oneData.getImage(position+1);
+        oneData.getImage(position);
         oneData.register(this);
     }
 
@@ -94,5 +122,24 @@ public class DetailActivity extends BaseActivity implements Channel {
         contactPhone.setText(commodityBean.getPhone());
         contactMan.setText(commodityBean.getUser());
         commodityDes.setText(commodityBean.getDescription());
+        this.commodityBean=commodityBean;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.finish:
+                finish();
+            case R.id.contactSeller:
+                Intent intent=new Intent(this,ChatActivity.class);
+                intent.putExtra("user",commodityBean.getGid());
+                startActivity(intent);
+            case R.id.buy:
+                WindowShow windowShow=new WindowShow(this,R.layout.window_buy);
+                windowShow.show();
+                BuyCommodityBean buyCommodityBean=new BuyCommodityBean(commodityBean.getGid(),commodityBean.getName(),commodityBean.getDescription(),commodityBean.getPrice(),commodityBean.getUser(),commodityBean.getOriginPrice(),commodityBean.getPhone(), String.valueOf(BaseApplication.getUser().getUid()));
+                BuyCommodity buyCommodity=new BuyCommodityImpel();
+                buyCommodity.changeState(buyCommodityBean);
+        }
     }
 }

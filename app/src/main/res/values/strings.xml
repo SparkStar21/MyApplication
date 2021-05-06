@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyApplication</string>
+    <string name="app_name">二手市场</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -7,9 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">新增商品</string>
+    <string name="menu_gallery">商情分析</string>
+    <string name="menu_slideshow">商品记录</string>
     <string name="menu_main">商城首页</string>
     <string name="menu_commodity">首页</string>
     <string name="menu_message">消息</string>
@@ -23,4 +23,18 @@
     <string name="register">注册</string>
     <string name="login_thirdparty" translatable="false">第三方账号登录</string>
     <string name="forget_pwd" translatable="false">忘记密码</string>
+
+    <string name="AccountNumber" translatable="false">账号</string>
+    <string name="notice" translatable="false">通知</string>
+    <string name="MessagePushAndNotification" translatable="false">消息推送及通知</string>
+    <string name="other" translatable="false">其他</string>
+    <string name="shuzi" translatable="false">3.6M</string>
+    <string name="set_up" translatable="false">设置</string>
+    <string name="personaldata" translatable="false">个人资料</string>
+    <string name="ChangPassword">修改密码</string>
+    <string name="CurrentVersion" translatable="false">当前版本</string>
+    <string name="ClearCache" translatable="false">清除缓存</string>
+    <string name="MineBtn_ChangePassword" translatable="false">修改密码</string>
+    <string name="Btn_FeedBack" translatable="false">意见反馈</string>
+    <string name="tcdl">退出登录</string>
 </resources>

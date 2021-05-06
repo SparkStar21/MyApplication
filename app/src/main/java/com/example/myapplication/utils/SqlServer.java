@@ -3,6 +3,8 @@ package com.example.myapplication.utils;
 import android.database.SQLException;
 
 import com.example.myapplication.Bean.CommodityBean;
+import com.example.myapplication.Bean.ShoppingRecordBean;
+import com.example.myapplication.Bean.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -86,15 +88,20 @@ public class SqlServer {
      * @param sql sql语句
      * @return 返回字符串（第一行第一列）
      */
-    public String getString(String sql){
-        String reauslt="";
+    public User getUser(String sql){
+        User user=new User();
         try
         {
             Statement stmt = con.createStatement();//创建Statement
             stmt.setQueryTimeout(timeOut);
             ResultSet rs = stmt.executeQuery(sql);//ResultSet类似Cursor
+            if(rs!=null)
             while (rs.next()) {
-                reauslt=rs.getString(1);
+                user.setUid(rs.getInt(1));
+                user.setUsername(rs.getString(2));
+                user.setUsercode(rs.getString(3));
+                user.setUsericon(rs.getInt(4));
+                user.setPhone(rs.getString(5));
             }
             rs.close();
             stmt.close();
@@ -105,9 +112,32 @@ public class SqlServer {
         } catch (java.sql.SQLException e) {
             System.out.println(e);
         }
-        return reauslt;
+        return user;
     }
 
+    public List <ShoppingRecordBean> getAllRecord(String sql){
+        List<ShoppingRecordBean> rslist = new ArrayList<ShoppingRecordBean>();
+        try
+        {
+            Statement stmt = con.createStatement();
+            stmt.setQueryTimeout(timeOut);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                rslist.add(new ShoppingRecordBean(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            }
+            rs.close();
+            stmt.close();
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        } catch (java.sql.SQLException e)
+        {
+            System.out.println(e);
+        }
+        return rslist;
+
+    }
     /**
      * 查询多行多列
      * @param sql sql语句

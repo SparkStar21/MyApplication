@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.BaseApplication;
 import com.example.myapplication.Bean.User;
 import com.example.myapplication.Presenters.IdentifyUser;
 import com.example.myapplication.Presenters.impel.IdentifyUserImpel;
@@ -17,6 +18,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.ui.callbacks.Login;
 import com.example.myapplication.utils.CodeUtils;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 
 /**
  *登录
@@ -105,9 +108,28 @@ public class LoginActivity extends BaseActivity implements Login {
 
 
     @Override
-    public void loginCallback(boolean result) {
+    public void loginCallback(boolean result,User user) {
         if(result){
+            BaseApplication.saveUser(user);
             navigationTo(this,MainActivity.class);
+            EMClient.getInstance().login(String.valueOf(user.getUid()),user.getUsercode(),new EMCallBack() {//回调
+                @Override
+                public void onSuccess() {
+                    EMClient.getInstance().groupManager().loadAllGroups();
+                    EMClient.getInstance().chatManager().loadAllConversations();
+                    Log.d("main", "登录聊天服务器成功！");
+                }
+
+                @Override
+                public void onProgress(int progress, String status) {
+
+                }
+
+                @Override
+                public void onError(int code, String message) {
+                    Log.d("main", "登录聊天服务器失败！");
+                }
+            });
         }else {
             showToast("账号或密码不存在");
         }

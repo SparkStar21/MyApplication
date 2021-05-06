@@ -5,13 +5,19 @@ public class User {
     private String usercode;
     private int usericon;
     private String sex;
+    private int uid;
+    private String phone;
+
+    public User(){
+
+    }
 
     public User(String username, String usercode) {
         this.username = username;
         this.usercode = usercode;
     }
 
-    public User(String username, String usercode, int usericon, String sex) {
+    public User(int uid,String username, String usercode, int usericon, String sex) {
         this.username = username;
         this.usercode = usercode;
         this.usericon=usericon;
@@ -49,5 +55,21 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

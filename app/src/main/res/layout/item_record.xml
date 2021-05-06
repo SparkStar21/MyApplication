@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/commodityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:text="商品名称">
+
+        </TextView>
+        <TextView
+            android:id="@+id/commodityPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="secondhandmarket"
+            android:textColor="@color/bigRed"
+            android:textSize="18dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right">
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="联系人电话：">
+
+        </TextView>
+        <TextView
+            android:id="@+id/phoneNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="134545464646">
+
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/commodityDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="发生发生嘎嘎大概多少敢死队敢死队公司的阿发是否嘎斯">
+
+    </TextView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/LightGrey"
+        android:layout_gravity="bottom">
+
+    </View>
+</LinearLayout>

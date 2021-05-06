@@ -43,17 +43,17 @@ public class MainFragment extends BaseFragment {
             public void onTabSelected(int tabId) {
                 Log.e("", String.valueOf(tabId));
                 switch (tabId){
-                    case 2131231024:{
+                    case 2131231060:{
                         showArea.removeAllViews();
                         getParentFragmentManager().beginTransaction().add(R.id.showArea,new CommodityFragment()).commit();
                         break;
                     }
-                    case 2131231025:{
+                    case 2131231061:{
                         showArea.removeAllViews();
                         getParentFragmentManager().beginTransaction().add(R.id.showArea,new MessageFragment()).commit();
                         break;
                     }
-                    case 2131231026:{
+                    case 2131231062:{
                         showArea.removeAllViews();
                         getParentFragmentManager().beginTransaction().add(R.id.showArea,new RecordFragment()).commit();
                         break;

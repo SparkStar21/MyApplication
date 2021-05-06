@@ -7,6 +7,7 @@
     android:layout_margin="5dp"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:background="@color/ivory"
     tools:context=".ui.activities.DetailActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,6 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/milkwhite"
                 android:orientation="horizontal">
 
                 <TextView
@@ -97,6 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
                     android:textSize="25dp">
 
                 </TextView>
@@ -106,6 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/milkwhite"
                 android:orientation="horizontal">
 
                 <TextView
@@ -121,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
                     android:textSize="25dp">
 
                 </TextView>
@@ -130,6 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/milkwhite"
                 android:orientation="horizontal">
 
                 <TextView
@@ -145,6 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
                     android:textSize="25dp">
 
                 </TextView>
@@ -153,6 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/milkwhite"
                 android:orientation="horizontal">
 
                 <TextView
@@ -168,6 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
                     android:textSize="25dp">
 
                 </TextView>
@@ -176,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/milkwhite"
                 android:orientation="horizontal">
 
                 <TextView
@@ -191,6 +201,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
                     android:textSize="25dp">
 
                 </TextView>
@@ -200,5 +211,54 @@
         </LinearLayout>
 
     </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp">
 
+        <com.example.myapplication.utils.CustomTab
+            android:id="@+id/collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            app:icon="@drawable/star_unchoosed"
+            app:name="收藏">
+
+        </com.example.myapplication.utils.CustomTab>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/milkwhite"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/contactSeller"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="联系卖家"
+                android:textSize="20dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/buy"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/milkwhite"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="购买"
+                android:textSize="20dp"></TextView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </LinearLayout>
