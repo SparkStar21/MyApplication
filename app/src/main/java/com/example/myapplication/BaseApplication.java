@@ -36,25 +36,6 @@ public class BaseApplication extends Application {
         MultiDex.install(this);
         // 初始化环信SDK
         initEasemob();
-
-        EMClient.getInstance().login("1","meng",new EMCallBack() {//回调
-            @Override
-            public void onSuccess() {
-                EMClient.getInstance().groupManager().loadAllGroups();
-                EMClient.getInstance().chatManager().loadAllConversations();
-                Log.d("main", "登录聊天服务器成功！");
-            }
-
-            @Override
-            public void onProgress(int progress, String status) {
-
-            }
-
-            @Override
-            public void onError(int code, String message) {
-                Log.d("main", "登录聊天服务器失败！");
-            }
-        });
     }
 
     public static void saveUser(User user){
@@ -62,7 +43,11 @@ public class BaseApplication extends Application {
         //第一个是关键词，第二个是关键词对应的内容
         editor.putString("username",user.getUsername());
         editor.putString("usercode",user.getUsercode());
+        editor.putInt("usericon",user.getUsericon());
+        editor.putInt("uid",user.getUid());
+        editor.putString("phone",user.getPhone());
         editor.apply();
+        editor.commit();
     }
 
     public static User getUser(){
@@ -70,11 +55,33 @@ public class BaseApplication extends Application {
         //第一个是获取关键词对应的内容，第二个是没获取到的话使用的默认值
         String username = getBeforeTopic.getString("username","null");
         String usercode=getBeforeTopic.getString("usercode","null");
-        String sex=getBeforeTopic.getString("sex","null");
+        String phone=getBeforeTopic.getString("phone","null");
         int usericon=getBeforeTopic.getInt("usericon",0);
-        User user=new User(username,usercode);
+        int userId=getBeforeTopic.getInt("uid",1);
+        User user=new User(userId,username,usercode,usericon,phone);
         return user;
+    }
 
+
+    public static int getIcon(String i){
+        switch (i){
+            case "1":{
+                return R.mipmap.head_man;
+            }
+            case "2":{
+                return R.mipmap.head_woman1;
+            }
+            case "3":{
+                return R.mipmap.head_woman;
+            }
+            case "4":{
+                return R.drawable.ic___;
+            }
+            case "5":{
+                return R.drawable.start_choosed;
+            }
+            default:return R.mipmap.head_man;
+        }
     }
 
 

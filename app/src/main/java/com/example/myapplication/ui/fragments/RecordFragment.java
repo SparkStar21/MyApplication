@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.BaseApplication;
 import com.example.myapplication.Bean.ShoppingRecordBean;
+import com.example.myapplication.Bean.User;
 import com.example.myapplication.Presenters.ShoppingRecord;
 import com.example.myapplication.Presenters.impel.ShoppingRecordImpel;
 import com.example.myapplication.R;
@@ -39,7 +41,8 @@ public class RecordFragment extends BaseFragment implements GetRecord {
 
     private void initPresenter(){
         ShoppingRecord shoppingRecord=new ShoppingRecordImpel();
-        shoppingRecord.getShoppingRecord(String.valueOf(BaseApplication.getUser().getUid()),"table_buy");
+        Log.e("", String.valueOf(BaseApplication.getUser().getUsericon()));
+        shoppingRecord.getShoppingRecord(String.valueOf(BaseApplication.getUser().getUsericon()),"table_buy");
         shoppingRecord.register(this);
     }
 

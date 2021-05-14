@@ -17,7 +17,7 @@ public class User {
         this.usercode = usercode;
     }
 
-    public User(int uid,String username, String usercode, int usericon, String sex) {
+    public User(int uid,String username, String usercode, int usericon, String phone) {
         this.username = username;
         this.usercode = usercode;
         this.usericon=usericon;

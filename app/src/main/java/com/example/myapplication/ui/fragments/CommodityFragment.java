@@ -113,7 +113,7 @@ public class CommodityFragment extends BaseFragment implements AllCommodity {
             }
         });
         List<Bitmap> bitmaps=new ArrayList<>();
-       int i=0;
+        int i=0;
         while (bitmaps.size()<5){
             if(list.get(i).getBitmaps().size()!=0){
                 bitmaps.add(list.get(i++).getBitmaps().get(0));

@@ -32,8 +32,7 @@ public class AnalysisFragment extends Fragment {
     @BindView(R.id.analysis_textViewSingleMonth)
     public TextView textViewSingleMonth;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         ButterKnife.bind(this,root);

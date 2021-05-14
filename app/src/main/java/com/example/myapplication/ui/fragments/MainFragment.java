@@ -33,7 +33,6 @@ public class MainFragment extends BaseFragment {
         ButterKnife.bind(this,root);
         initBar();
         return root;
-
     }
 
 
@@ -43,17 +42,17 @@ public class MainFragment extends BaseFragment {
             public void onTabSelected(int tabId) {
                 Log.e("", String.valueOf(tabId));
                 switch (tabId){
-                    case 2131231060:{
+                    case 2131231064:{
                         showArea.removeAllViews();
                         getParentFragmentManager().beginTransaction().add(R.id.showArea,new CommodityFragment()).commit();
                         break;
                     }
-                    case 2131231061:{
+                    case 2131231065:{
                         showArea.removeAllViews();
                         getParentFragmentManager().beginTransaction().add(R.id.showArea,new MessageFragment()).commit();
                         break;
                     }
-                    case 2131231062:{
+                    case 2131231066:{
                         showArea.removeAllViews();
                         getParentFragmentManager().beginTransaction().add(R.id.showArea,new RecordFragment()).commit();
                         break;

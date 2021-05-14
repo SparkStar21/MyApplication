@@ -39,7 +39,7 @@ public class SellingFragment extends BaseFragment implements GetRecord {
 
     private void initPresenter(){
         ShoppingRecord shoppingRecord=new ShoppingRecordImpel();
-        shoppingRecord.getShoppingRecord(String.valueOf(BaseApplication.getUser().getUid()),"table_sell");
+        shoppingRecord.getShoppingRecord(String.valueOf(BaseApplication.getUser().getUsername()),"table_sell");
         shoppingRecord.register(this);
     }
 

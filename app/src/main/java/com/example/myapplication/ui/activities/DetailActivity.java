@@ -130,16 +130,18 @@ public class DetailActivity extends BaseActivity implements Channel, View.OnClic
         switch (v.getId()){
             case R.id.finish:
                 finish();
+                break;
             case R.id.contactSeller:
                 Intent intent=new Intent(this,ChatActivity.class);
-                intent.putExtra("user",commodityBean.getGid());
+                intent.putExtra("user",commodityBean.getUser());
                 startActivity(intent);
+                break;
             case R.id.buy:
-                WindowShow windowShow=new WindowShow(this,R.layout.window_buy);
-                windowShow.show();
-                BuyCommodityBean buyCommodityBean=new BuyCommodityBean(commodityBean.getGid(),commodityBean.getName(),commodityBean.getDescription(),commodityBean.getPrice(),commodityBean.getUser(),commodityBean.getOriginPrice(),commodityBean.getPhone(), String.valueOf(BaseApplication.getUser().getUid()));
+                startActivity(new Intent(this,ChoosePayWayActivity.class));
+                BuyCommodityBean buyCommodityBean=new BuyCommodityBean(commodityBean.getGid(),commodityBean.getName(),commodityBean.getDescription(),commodityBean.getPrice(),commodityBean.getUser(),commodityBean.getOriginPrice(),commodityBean.getPhone(), String.valueOf(BaseApplication.getUser().getUsericon()));
                 BuyCommodity buyCommodity=new BuyCommodityImpel();
                 buyCommodity.changeState(buyCommodityBean);
+                break;
         }
     }
 }

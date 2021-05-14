@@ -17,5 +17,7 @@
         <!-- 遮罩层 -->
         <item name="android:backgroundDimAmount">0.5</item>
     </style>
-
+    <style name="mycheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_tick</item>
+    </style>
 </resources>

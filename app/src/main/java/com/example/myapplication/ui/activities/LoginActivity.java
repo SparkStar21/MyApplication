@@ -22,7 +22,7 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 
 /**
- *登录
+ *   登录
 **/
 
 public class LoginActivity extends BaseActivity implements Login {

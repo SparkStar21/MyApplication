@@ -156,7 +156,7 @@ public class DataCollection {
             protected void subscribeActual(Observer observer) {
                 List <ShoppingRecordBean>list = null;
                 if(type=="table_sell"){
-                    list=sqlServer.getAllRecord(String.format("SELECT gname,purchaserId,gdes,phoneNum,gprice FROM soldgoods Where guserId = '%s'",user));
+                    list=sqlServer.getAllRecord(String.format("SELECT gname,originalprice,gdes,phoneNum,gprice FROM goods Where guser = '%s'",user));
                 }else if (type=="table_buy"){
                     list=sqlServer.getAllRecord(String.format("SELECT gname,guserId,gdes,phoneNum,gprice FROM soldgoods Where purchaserId = '%s'",user));
                 }

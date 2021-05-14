@@ -1,6 +1,7 @@
 package com.example.myapplication.adpter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,10 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.BaseApplication;
 import com.example.myapplication.Bean.MsgBean;
 import com.example.myapplication.R;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +26,7 @@ public class RecycleViewMessageAdapter extends RecyclerView.Adapter<RecycleViewM
     String LOG="RecycleViewMessageAdapter";
     private List <MsgBean>list;
     private Context context;
+    private int i=0;
     private OnItemOnClick onItemOnClickListener;
     public RecycleViewMessageAdapter(List <MsgBean> list, Context context){
         this.list=list;
@@ -45,10 +49,10 @@ public class RecycleViewMessageAdapter extends RecyclerView.Adapter<RecycleViewM
 
     @Override
     public void onBindViewHolder(@NonNull MessageHolder holder, int position) {
-        Glide.with(context).load(R.mipmap.head_man).into(holder.personIcon);
-        holder.contact.setText(list.get(position).getFrom());
+        Glide.with(context).load(BaseApplication.getIcon(list.get(position).getFrom())).into(holder.personIcon);
+        holder.contact.setText(list.get(position).getNickName());
         if(!(list.get(position).getUnreadCount() ==0)){
-            holder.unreadWarning.setText(list.get(position).getUnreadCount());
+            holder.unreadWarning.setText(String.valueOf(list.get(position).getUnreadCount()));
             holder.unreadWarning.setVisibility(View.VISIBLE);
         }
         holder.lastMessageContent.setText(list.get(position).getTxt());
@@ -90,4 +94,5 @@ public class RecycleViewMessageAdapter extends RecyclerView.Adapter<RecycleViewM
             ButterKnife.bind(this,itemView);
         }
     }
+
 }

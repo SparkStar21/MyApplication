@@ -8,6 +8,7 @@ public class MsgBean implements Serializable {
     private String txt;
     private String time;
     private int unreadCount;
+    private String nickName;
     public MsgBean(){
 
 
@@ -23,11 +24,12 @@ public class MsgBean implements Serializable {
         this.time=time;
     }
 
-    public MsgBean(String from, String to, String txt,String time,int unreadCount) {
+    public MsgBean(String nickName,String from, String to, String txt,String time,int unreadCount) {
         this.from = from;
         this.to = to;
         this.txt = txt;
         this.time=time;
+        this.nickName=nickName;
         this.unreadCount=unreadCount;
     }
 
@@ -69,5 +71,13 @@ public class MsgBean implements Serializable {
 
     public void setUnreadCount(int unreadCount) {
         this.unreadCount = unreadCount;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }

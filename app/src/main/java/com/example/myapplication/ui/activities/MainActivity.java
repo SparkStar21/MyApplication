@@ -2,6 +2,8 @@ package com.example.myapplication.ui.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.myapplication.BaseApplication;
 import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-
+        View view=View.inflate(this,R.layout.nav_header_main,null);
+        ImageView icon=view.findViewById(R.id.avatar);
+        icon.setImageResource(BaseApplication.getIcon(String.valueOf(BaseApplication.getUser().getUsericon())));
+        navigationView.addHeaderView(view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
