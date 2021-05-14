@@ -1,6 +1,6 @@
 # MyApplication
 the project is finished by a fresh man,
-it is easy and specified android project,
+it is easy and specific android project,
 no single instance or other major coding mode,
 the difficulty degree is 0.01 star. 
 OverView :
